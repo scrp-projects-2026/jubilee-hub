@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<!-- saved from url=(0157)file:///C:/Users/ASUS/OneDrive/OneDrive%20Archive/%F0%9F%93%82dr-palesa-jet-review-portal/SCADA-Telemetry-Simulation/feedstock-dilution-viscosity-matrix.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedstock Viscosity &amp; Dilution Matrix | Lwandile Engineering Projects</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --panel-bg: #161b22;
+            --border-color: #30363d;
+            --accent-green: #238636;
+            --accent-blue: #58a6ff;
+            --accent-amber: #d29922;
+            --accent-purple: #bc8cff;
+            --accent-red: #da3633;
+            --text-main: #c9d1d9;
+            --text-bright: #f0f6fc;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sovereign-header {
+            text-align: center;
+            padding: 14px;
+            background: rgba(188, 140, 255, 0.1);
+            border: 1px solid var(--accent-purple);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--accent-purple);
+            letter-spacing: 1.5px;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+
+        .vision-drawer {
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .vision-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+        }
+
+        .vision-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vision-title h2 {
+            margin: 0;
+            color: var(--text-bright);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .vision-title p {
+            margin: 4px 0 0 0;
+            color: #8b949e;
+            font-size: 13px;
+        }
+
+        .audio-btn {
+            background: var(--accent-purple);
+            color: #000000;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vision-quote {
+            line-height: 1.7;
+            font-size: 14px;
+            color: var(--text-bright);
+        }
+
+        .scada-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .scada-grid { grid-template-columns: 1fr; }
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .panel h3 {
+            margin-top: 0;
+            color: var(--text-bright);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .control-group {
+            margin-bottom: 16px;
+            background: var(--bg-dark);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-bright);
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-purple);
+        }
+
+        .steward-teaching-box {
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--accent-purple);
+            line-height: 1.4;
+            border-left: 3px solid var(--accent-purple);
+            padding: 6px 10px;
+            background: rgba(188, 140, 255, 0.05);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .telemetry-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin: 4px 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .status-optimal { background: rgba(35, 134, 54, 0.2); color: #3fb950; border: 1px solid var(--accent-green); }
+        .status-warning { background: rgba(210, 153, 34, 0.2); color: var(--accent-amber); border: 1px solid var(--accent-amber); }
+        .status-danger { background: rgba(218, 54, 51, 0.2); color: var(--accent-red); border: 1px solid var(--accent-red); }
+
+        .audit-terminal {
+            background: #040d12;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            color: #bc8cff;
+            height: 120px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .narrator-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--text-bright);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="sovereign-header">
+        🌀 LWANDILE ENGINEERING PROJECTS • FEEDSTOCK DILUTION &amp; VISCOSITY MATRIX
+    </div>
+
+    <div class="vision-drawer">
+        <div class="vision-header">
+            <div class="vision-title">
+                <span style="font-size: 28px;">🧪</span>
+                <div>
+                    <h2>Voice of Vision | Non-Clogging Bio-Digester Fluid Hydraulics</h2>
+                    <p>Scapush Precision Rheology Interlock • R3.1M MVP Base (5,720 Broilers + 160 Swine)</p>
+                </div>
+            </div>
+            <button onclick="toggleVisionAudio()" id="audio-btn" class="audio-btn" style="background: var(--accent-purple);"><span>▶</span> Listen to Directive</button>
+        </div>
+
+        <div class="vision-quote">
+            <p>
+                <strong style="color: var(--accent-purple);">Sovereign Rheology Inscription:</strong> 
+                "In Scapush Precision, viscosity is pump life. We maintain digester slurry strictly between 8% and 10% Total Solids (TS). Dry broiler litter and dense swine slurry are precision-blended with water and warm liquid digestate recirculation to achieve non-clogging fluid dynamics, zero crusting, and continuous tri-yield output."
+            </p>
+        </div>
+
+        <div class="narrator-toggle">
+            <input type="checkbox" id="voice-activation-toggle" checked="">
+            <label for="voice-activation-toggle"><strong>Enable Voice Narrator on Every Activation &amp; Control Adjustment</strong></label>
+        </div>
+    </div>
+
+    <div class="scada-grid">
+        <!-- PANEL 1: RAW WASTE INPUTS -->
+        <div class="panel">
+            <h3>📦 Feedstock Waste Inputs</h3>
+
+            <div class="control-group">
+                <label>Broiler Litter Mass: <span id="litter-val">2300</span> kg / day</label>
+                <input type="range" id="litter-input" min="100" max="2500" step="50" value="500" oninput="handleLitterInput(this.value)">
+                <div class="steward-teaching-box" id="steward-litter-teaching">
+                    📜 <strong>Steward's Teaching:</strong> R3.1M MVP Baseline: 5,720 broilers generate ~500 kg/day raw litter at ~30% Total Solids (TS).
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Swine Slurry Mass: <span id="swine-val">2050</span> kg / day</label>
+                <input type="range" id="swine-input" min="100" max="3000" step="50" value="760" oninput="handleSwineInput(this.value)">
+                <div class="steward-teaching-box" id="steward-swine-teaching">
+                    📜 <strong>Steward's Teaching:</strong> R3.1M MVP Baseline: 160 swine generate ~760 kg/day slurry at ~11% Total Solids (TS).
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 2: HYDRAULIC DILUTION ENGINE -->
+        <div class="panel">
+            <h3>💧 Dilution &amp; Rheology Controls</h3>
+
+            <div class="control-group">
+                <label>Added Dilution Water: <span id="water-add-val">3350</span> L / day</label>
+                <input type="range" id="water-add-input" min="0" max="4000" step="50" value="1200" oninput="handleWaterInput(this.value)">
+                <div class="steward-teaching-box" id="steward-water-teaching">📜 <strong>Steward's Warning:</strong> TS at 11.9% exceeds the 11% non-clogging threshold. Slurry will act as non-Newtonian plug flow. Increase water or digestate recirculation immediately!</div>
+            </div>
+
+            <div>
+                <span style="font-size: 11px; color: #8b949e;">Calculated Total Solids (TS%)</span>
+                <div id="ts-value" class="telemetry-value" style="color: var(--accent-red);">11.9% TS</div>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <span id="viscosity-badge" class="status-badge status-danger">CRITICAL VISCOSITY ALERT: PUMP BLOCKAGE HIGH RISK</span>
+            </div>
+        </div>
+
+        <!-- PANEL 3: TRI-YIELD ENERGY OUTPUT -->
+        <div class="panel">
+            <h3>⚡ Tri-Yield Bio-Refinery Output</h3>
+
+            <div style="margin-bottom: 10px;">
+                <span style="font-size: 11px; color: #8b949e;">Electrical Co-Gen (CHP)</span>
+                <div id="elec-yield" class="telemetry-value" style="color: var(--accent-amber);">749.5 kWh / day</div>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <span style="font-size: 11px; color: #8b949e;">Thermal Energy (Brood Recirculation)</span>
+                <div id="thermal-yield" class="telemetry-value" style="color: var(--accent-blue);">4104.5 MJ / day</div>
+            </div>
+
+            <div>
+                <span style="font-size: 11px; color: #8b949e;">Liquid Bio-Fertilizer (Digestate)</span>
+                <div id="fertilizer-yield" class="telemetry-value" style="color: var(--accent-purple);">7,084 L / day</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="audit-terminal" id="terminal-log">
+        [SYSTEM STARTUP]: Lwandile Feedstock Viscosity Engine Initialized.<br>
+        [MODEL SETUP]: Scapush Rheology Interlock Engaged. Baseline 5,720 Broilers / 160 Swine.<br>
+        [NARRATOR SYSTEM]: Voice Narrator on Every Activation initialized.<br>
+        [STEWARD TEACHINGS]: Dilution Standard Locked to 8% - 10% Total Solids.
+    <br>[4:43:29 PM]: [NARRATOR ACTIVATION]: Broiler litter mass updated to 2450 kilograms per day. Recalculating dry matter dilution requirement.<br>[4:43:39 PM]: [NARRATOR ACTIVATION]: Swine slurry mass set to 3000 kilograms per day. Updating fluid viscosity profile.<br>[4:43:44 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 4000 liters per day. Verifying anti-clogging total solids threshold.<br>[4:43:47 PM]: [NARRATOR ACTIVATION]: Broiler litter mass updated to 2000 kilograms per day. Recalculating dry matter dilution requirement.<br>[4:43:49 PM]: [NARRATOR ACTIVATION]: Swine slurry mass set to 2450 kilograms per day. Updating fluid viscosity profile.<br>[4:43:56 PM]: [NARRATOR ACTIVATION]: Swine slurry mass set to 2100 kilograms per day. Updating fluid viscosity profile.<br>[4:43:57 PM]: [NARRATOR ACTIVATION]: Swine slurry mass set to 1850 kilograms per day. Updating fluid viscosity profile.<br>[4:43:59 PM]: [NARRATOR ACTIVATION]: Swine slurry mass set to 2050 kilograms per day. Updating fluid viscosity profile.<br>[4:44:37 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 300 liters per day. Verifying anti-clogging total solids threshold.<br>[4:44:48 PM]: [NARRATOR ACTIVATION]: Broiler litter mass updated to 650 kilograms per day. Recalculating dry matter dilution requirement.<br>[4:44:50 PM]: [NARRATOR ACTIVATION]: Swine slurry mass set to 600 kilograms per day. Updating fluid viscosity profile.<br>[4:44:52 PM]: [NARRATOR ACTIVATION]: Broiler litter mass updated to 200 kilograms per day. Recalculating dry matter dilution requirement.<br>[4:44:54 PM]: [NARRATOR ACTIVATION]: Swine slurry mass set to 150 kilograms per day. Updating fluid viscosity profile.<br>[4:45:00 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 650 liters per day. Verifying anti-clogging total solids threshold.<br>[4:45:07 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 500 liters per day. Verifying anti-clogging total solids threshold.<br>[4:45:10 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 300 liters per day. Verifying anti-clogging total solids threshold.<br>[4:45:15 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 450 liters per day. Verifying anti-clogging total solids threshold.<br>[4:45:32 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 150 liters per day. Verifying anti-clogging total solids threshold.<br>[4:45:38 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 350 liters per day. Verifying anti-clogging total solids threshold.<br>[8:23:01 PM]: [NARRATOR ACTIVATION]: Rheology directive engaged.<br>[8:23:35 PM]: [NARRATOR ACTIVATION]: Broiler litter mass updated to 1300 kilograms per day. Recalculating dry matter dilution requirement.<br>[8:23:38 PM]: [NARRATOR ACTIVATION]: Broiler litter mass updated to 550 kilograms per day. Recalculating dry matter dilution requirement.<br>[6:02:16 PM]: [NARRATOR ACTIVATION]: Swine slurry mass set to 650 kilograms per day. Updating fluid viscosity profile.<br>[6:02:28 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 1800 liters per day. Verifying anti-clogging total solids threshold.<br>[6:02:38 PM]: [NARRATOR ACTIVATION]: Dilution water flow adjusted to 3350 liters per day. Verifying anti-clogging total solids threshold.<br>[6:02:48 PM]: [NARRATOR ACTIVATION]: Broiler litter mass updated to 2300 kilograms per day. Recalculating dry matter dilution requirement.<br>[6:03:01 PM]: [NARRATOR ACTIVATION]: Swine slurry mass set to 2050 kilograms per day. Updating fluid viscosity profile.</div>
+
+</div>
+
+<script>
+let isSpeakingDirective = false;
+let speechDebounceTimer = null;
+
+const visionText = `Voice of Vision, Feedstock Dilution and Viscosity Matrix by Lwandile Engineering Projects. In Scapush Precision, viscosity is pump life. We maintain digester slurry strictly between 8% and 10% Total Solids. Dry broiler litter and dense swine slurry are precision blended with water to achieve non-clogging fluid dynamics, zero crusting, and continuous tri-yield output. Proceed with Scapush Precision.`;
+
+function speakText(text) {
+    const isVoiceEnabled = document.getElementById('voice-activation-toggle').checked;
+    if (!isVoiceEnabled || !('speechSynthesis' in window)) return;
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.0;
+    utterance.pitch = 0.95;
+    window.speechSynthesis.speak(utterance);
+}
+
+function logTerminal(message) {
+    const log = document.getElementById('terminal-log');
+    const timestamp = new Date().toLocaleTimeString();
+    log.innerHTML += `<br>[${timestamp}]: ${message}`;
+    log.scrollTop = log.scrollHeight;
+}
+
+function handleLitterInput(val) {
+    updateRheology();
+    clearTimeout(speechDebounceTimer);
+    speechDebounceTimer = setTimeout(() => {
+        const text = `Broiler litter mass updated to ${val} kilograms per day. Recalculating dry matter dilution requirement.`;
+        speakText(text);
+        logTerminal(`[NARRATOR ACTIVATION]: ${text}`);
+    }, 350);
+}
+
+function handleSwineInput(val) {
+    updateRheology();
+    clearTimeout(speechDebounceTimer);
+    speechDebounceTimer = setTimeout(() => {
+        const text = `Swine slurry mass set to ${val} kilograms per day. Updating fluid viscosity profile.`;
+        speakText(text);
+        logTerminal(`[NARRATOR ACTIVATION]: ${text}`);
+    }, 350);
+}
+
+function handleWaterInput(val) {
+    updateRheology();
+    clearTimeout(speechDebounceTimer);
+    speechDebounceTimer = setTimeout(() => {
+        const text = `Dilution water flow adjusted to ${val} liters per day. Verifying anti-clogging total solids threshold.`;
+        speakText(text);
+        logTerminal(`[NARRATOR ACTIVATION]: ${text}`);
+    }, 350);
+}
+
+function toggleVisionAudio() {
+    const btn = document.getElementById('audio-btn');
+    if ('speechSynthesis' in window) {
+        if (isSpeakingDirective) {
+            window.speechSynthesis.cancel();
+            isSpeakingDirective = false;
+            btn.innerHTML = '<span>▶</span> Listen to Directive';
+            btn.style.background = 'var(--accent-purple)';
+            logTerminal('[NARRATOR]: Viscosity directive audio paused.');
+        } else {
+            const utterance = new SpeechSynthesisUtterance(visionText);
+            utterance.rate = 0.92;
+            utterance.pitch = 0.95;
+            
+            utterance.onend = function() {
+                isSpeakingDirective = false;
+                btn.innerHTML = '<span>▶</span> Listen to Directive';
+                btn.style.background = 'var(--accent-purple)';
+            };
+
+            window.speechSynthesis.speak(utterance);
+            isSpeakingDirective = true;
+            btn.innerHTML = '<span>⏹</span> Pause Directive';
+            btn.style.background = 'var(--accent-red)';
+            logTerminal('[NARRATOR ACTIVATION]: Rheology directive engaged.');
+        }
+    }
+}
+
+function updateRheology() {
+    const litterKg = parseFloat(document.getElementById('litter-input').value);
+    const swineKg = parseFloat(document.getElementById('swine-input').value);
+    const addedWaterL = parseFloat(document.getElementById('water-add-input').value);
+
+    document.getElementById('litter-val').innerText = litterKg;
+    document.getElementById('swine-val').innerText = swineKg;
+    document.getElementById('water-add-val').innerText = addedWaterL;
+
+    // Total Solids Mass Math
+    // Poultry Litter TS ~ 30% | Swine Slurry TS ~ 11%
+    const litterDryMass = litterKg * 0.30;
+    const swineDryMass = swineKg * 0.11;
+    const totalDryMass = litterDryMass + swineDryMass;
+
+    const totalWetMass = litterKg + swineKg + addedWaterL;
+    const calculatedTS = (totalDryMass / totalWetMass) * 100;
+
+    const tsDisplay = document.getElementById('ts-value');
+    const badge = document.getElementById('viscosity-badge');
+    const stewardWater = document.getElementById('steward-water-teaching');
+
+    tsDisplay.innerText = calculatedTS.toFixed(1) + "% TS";
+
+    // Viscosity & Anti-Clogging Threshold Checks
+    if (calculatedTS > 11.0) {
+        tsDisplay.style.color = "var(--accent-red)";
+        badge.className = "status-badge status-danger";
+        badge.innerText = "CRITICAL VISCOSITY ALERT: PUMP BLOCKAGE HIGH RISK";
+        stewardWater.innerHTML = `📜 <strong>Steward's Warning:</strong> TS at ${calculatedTS.toFixed(1)}% exceeds the 11% non-clogging threshold. Slurry will act as non-Newtonian plug flow. Increase water or digestate recirculation immediately!`;
+    } else if (calculatedTS < 6.5) {
+        tsDisplay.style.color = "var(--accent-amber)";
+        badge.className = "status-badge status-warning";
+        badge.innerText = "OVER-DILUTION DETECTED: EXCESS parasitic HEATING LOAD";
+        stewardWater.innerHTML = `📜 <strong>Steward's Warning:</strong> TS at ${calculatedTS.toFixed(1)}% is overly diluted. While pumpable, heating excess water wastes digester thermal yield. Target 8.0% - 10.0% TS.`;
+    } else {
+        tsDisplay.style.color = "#3fb950";
+        badge.className = "status-badge status-optimal";
+        badge.innerText = "HYDRAULICS NOMINAL: OPTIMAL NON-CLOGGING VISCOSITY";
+        stewardWater.innerHTML = `📜 <strong>Steward's Teaching:</strong> Total Solids at ${calculatedTS.toFixed(1)}% is optimal (Motor Oil Viscosity). Zero crusting risk, smooth macerator throughput, and continuous gas yield.`;
+    }
+
+    // Tri-Yield Output Calculations
+    const totalBiogasM3 = (litterDryMass * 0.38) + (swineDryMass * 0.42);
+    const elecKwh = (totalBiogasM3 * 2.1).toFixed(1);
+    const thermalMj = (totalBiogasM3 * 11.5).toFixed(1);
+    const fertilizerL = Math.round(totalWetMass * 0.92);
+
+    document.getElementById('elec-yield').innerText = elecKwh + " kWh / day";
+    document.getElementById('thermal-yield').innerText = thermalMj + " MJ / day";
+    document.getElementById('fertilizer-yield').innerText = fertilizerL.toLocaleString() + " L / day";
+}
+
+updateRheology();
+</script>
+
+
+</body></html>

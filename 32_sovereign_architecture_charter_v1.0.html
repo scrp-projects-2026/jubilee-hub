@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Sovereign Architecture Charter | Version 1.0</title>
+<style>
+:root{
+  --navy:#071522;--navy2:#0d2435;--panel:#102c3e;--gold:#e7bd62;
+  --teal:#56d0c1;--white:#f6f8fb;--muted:#b9c8d3;--line:#315064;
+  --green:#9ee0b1;--warning:#ffd58a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:var(--white);font:16px/1.65 "Segoe UI",Arial,sans-serif}
+a{color:var(--teal)}
+header{padding:clamp(28px,6vw,76px) max(22px,calc((100% - 1180px)/2));background:linear-gradient(135deg,#071522 0%,#12354a 62%,#0b4b4b 100%);border-bottom:3px solid var(--gold)}
+.eyebrow{color:var(--teal);font-size:.78rem;letter-spacing:.19em;text-transform:uppercase;font-weight:800}
+h1{font-size:clamp(2rem,5.3vw,4.2rem);line-height:1.06;max-width:1000px;margin:.6rem 0 1rem;letter-spacing:-.035em}
+.subtitle{font-size:clamp(1.05rem,2vw,1.4rem);color:var(--muted);max-width:850px}
+.badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}
+.badge{border:1px solid #547284;background:#0a1d2b;padding:7px 12px;border-radius:999px;font-size:.85rem}
+main{max-width:1180px;margin:auto;padding:28px 22px 70px}
+.callout{border-left:4px solid var(--gold);background:var(--navy2);padding:20px 22px;margin:24px 0;border-radius:0 12px 12px 0}
+.callout strong{color:var(--gold)}
+.principles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:22px 0}
+.principle{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.principle b{display:block;color:var(--gold);margin-bottom:5px}
+
+/* Control Panel for Scrolldown & Section Narrator */
+.narrator-control-panel {
+  background: #0b1e2c;
+  border: 2px solid var(--teal);
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin: 26px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.narrator-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.narrator-title {
+  font-weight: 700;
+  color: var(--teal);
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.narrator-select {
+  background: var(--navy2);
+  color: var(--white);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+  min-width: 220px;
+}
+.narrator-select:focus {
+  border-color: var(--teal);
+  outline: none;
+}
+.narrator-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn-play {
+  background: var(--teal);
+  color: #071522;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-play:hover { background: #40b5a6; }
+.btn-stop {
+  background: var(--warning);
+  color: #132230;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-stop:hover { background: #e6be75; }
+
+/* Section Active Narration Highlight */
+section {
+  margin: 34px 0;
+  scroll-margin-top: 25px;
+  padding: 14px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border: 1px solid transparent;
+}
+section.active-narration {
+  background-color: rgba(86, 208, 193, 0.06);
+  border-color: var(--teal);
+  box-shadow: 0 0 15px rgba(86, 208, 193, 0.15);
+}
+
+/* Section Header Audio Button */
+.section-header-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+.section-header-wrap h2 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.btn-section-listen {
+  background: var(--navy2);
+  color: var(--teal);
+  border: 1px solid var(--teal);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.btn-section-listen:hover {
+  background: var(--teal);
+  color: #071522;
+}
+
+nav{background:#0b1e2c;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:26px 0}
+nav h2{margin:0 0 8px;font-size:1.05rem}
+nav ol{columns:2;column-gap:36px;margin:0;padding-left:22px}
+nav li{break-inside:avoid;margin:4px 0}
+h2{font-size:clamp(1.45rem,3vw,2rem);line-height:1.2;color:var(--teal)}
+h3{color:var(--gold);margin:22px 0 8px;font-size:1.15rem}
+p{margin:.55rem 0 1rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:var(--navy2);border:1px solid var(--line);border-radius:13px;padding:18px}
+.card h3{margin-top:0}
+ul{padding-left:1.25rem}
+li{margin:.3rem 0}
+table{width:100%;border-collapse:collapse;margin:14px 0 20px;background:#0b1e2c;border-radius:10px;overflow:hidden}
+th,td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid var(--line)}
+th{background:#16384b;color:var(--gold);font-weight:750}
+tr:last-child td{border-bottom:0}
+.metric{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;color:var(--gold);line-height:1.2}
+.small{font-size:.9rem;color:var(--muted)}
+.tag{display:inline-block;border:1px solid #497264;color:var(--green);padding:2px 8px;border-radius:99px;font-size:.75rem;font-weight:700}
+.warning{border-left:4px solid var(--warning);background:#302817;padding:16px 18px;border-radius:0 10px 10px 0}
+.flow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin:18px 0}
+.flow span{background:#12384a;border:1px solid #3b6476;border-radius:10px;padding:12px 16px;flex:1;min-width:130px;text-align:center;font-weight:700}
+.flow .plus{background:transparent;border:0;min-width:20px;flex:0 0 auto;color:var(--gold);font-size:1.3rem;padding:10px 0}
+footer{border-top:1px solid var(--line);padding:26px 22px;text-align:center;color:var(--muted);background:#06111b}
+button{background:var(--gold);color:#132230;border:0;border-radius:8px;padding:10px 15px;font-weight:800;cursor:pointer}
+.actions{display:flex;justify-content:flex-end;gap:10px;margin:18px 0}
+@media(max-width:760px){.principles{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}nav ol{columns:1}table{display:block;overflow-x:auto;white-space:normal}th,td{min-width:130px}}
+@media print{
+  :root{--navy:#fff;--navy2:#f4f7f9;--panel:#f4f7f9;--white:#111;--muted:#444;--line:#b7c4cb;--teal:#075d5a;--gold:#805600}
+  body{background:#fff;color:#111;font-size:10pt}
+  header{padding:24px;background:#f4f7f9!important;color:#111;border-bottom:2px solid #805600}
+  main{padding:15px 0;max-width:none}
+  .card,.callout,nav,table,.principle{break-inside:avoid}
+  .actions,.narrator-control-panel,.btn-section-listen{display:none}a{color:#111;text-decoration:none}
+  section{break-inside:auto}h2,h3{break-after:avoid}
+  footer{background:#fff;color:#333}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Sovereign Bio-Solar-Thermal Campus</div>
+  <h1>Sovereign Architecture Charter</h1>
+  <div class="subtitle">Master Architecture &amp; Living Baseline — Version 1.0</div>
+  <div class="badges">
+    <span class="badge">MVP Authority Document</span>
+    <span class="badge">Design Baseline — Proposed</span>
+    <span class="badge">Living, Measurable, Expandable</span>
+  </div>
+</header>
+
+<main>
+  <div class="actions"><button onclick="window.print()">Print / Save as PDF</button></div>
+
+  <!-- Interactive Scrolldown Narrator Control Panel -->
+  <div class="narrator-control-panel" role="region" aria-label="Audio Narration Control Center">
+    <div class="narrator-row">
+      <div class="narrator-title">
+        <span>🎧 Interactive Section Narrator &amp; Auto-Scroller</span>
+      </div>
+      <div class="narrator-buttons">
+        <button class="btn-play" onclick="startFullNarration()">▶ Play Full Charter Narration</button>
+        <button class="btn-stop" onclick="stopNarration()">⏹ Stop / Mute</button>
+      </div>
+    </div>
+    <div class="narrator-row">
+      <select id="sectionDropdown" class="narrator-select" onchange="jumpAndListenSelectedSection(this.value)">
+        <option value="">-- Jump to &amp; Listen Specific Section --</option>
+        <option value="declaration">1. Executive Declaration</option>
+        <option value="governance">2. Design Authority &amp; Governance</option>
+        <option value="land">3. Land &amp; Site Baseline</option>
+        <option value="livestock">4. Livestock Production Baseline</option>
+        <option value="commercial">5. Commercial Baseline</option>
+        <option value="water">6. Water Sovereignty</option>
+        <option value="energy">7. Energy Sovereignty &amp; Microgrid</option>
+        <option value="nursery">8. Nursery &amp; Biosecurity Architecture</option>
+        <option value="scada">9. SCADA &amp; Digital Twin</option>
+        <option value="accessibility">10. Accessibility Architecture</option>
+        <option value="academy">11. Entrepreneurship Academy</option>
+        <option value="environment">12. Environmental Stewardship</option>
+        <option value="fire">13. Fire Protection</option>
+        <option value="emergency">14. Emergency Architecture</option>
+        <option value="failsafe">15. Failsafe Design</option>
+        <option value="expansion">16. Expansion Triggers</option>
+        <option value="kpis">17. Master KPI Dashboard</option>
+        <option value="validation">18. Validation Register</option>
+        <option value="change">19. Version &amp; Change Control</option>
+        <option value="final">20. Final Declaration</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Charter purpose</strong>
+    <p>One Vision. One Design Truth. One Engineering Baseline. Many Future Expansions.</p>
+    This Charter establishes the project's internal design authority. It preserves the agreed planning baseline while requiring validation, version control and documented approval before material changes are adopted.
+  </div>
+
+  <div class="principles" aria-label="Living baseline framework">
+    <div class="principle"><b>Baseline</b>Current planning position, frozen for traceability.</div>
+    <div class="principle"><b>Expandable</b>Defined pathways for controlled future growth.</div>
+    <div class="principle"><b>Measured</b>Key performance indicators (KPIs) and evidence.</div>
+    <div class="principle"><b>Review Trigger</b>Conditions requiring reassessment or upgrade.</div>
+  </div>
+
+  <nav aria-label="Table of contents">
+    <h2>Charter Navigation</h2>
+    <ol>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#declaration">Executive Declaration</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#governance">Design Authority &amp; Governance</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#land">Land &amp; Site Baseline</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#livestock">Livestock Production</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#commercial">Commercial Baseline</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#water">Water Sovereignty</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#energy">Energy &amp; Microgrid</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#nursery">Nursery &amp; Biosecurity</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#scada">SCADA &amp; Digital Twin</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#accessibility">Accessibility</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#academy">Entrepreneurship Academy</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#environment">Environmental Stewardship</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#fire">Fire Protection</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#emergency">Emergency Architecture</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#failsafe">Failsafe Design</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#expansion">Expansion Triggers</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#kpis">Master KPI Dashboard</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#validation">Validation Register</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#change">Version &amp; Change Control</a></li>
+      <li><a href="file:///C:/Users/ASUS/Downloads/gemini-code-1792762537929.html#final">Final Declaration</a></li>
+    </ol>
+  </nav>
+
+  <section id="declaration" class="">
+    <div class="section-header-wrap">
+      <h2>1. Executive Declaration</h2>
+      <button class="btn-section-listen" onclick="speakSection('declaration')">🔊 Listen Section</button>
+    </div>
+    <p>The Sovereign Bio-Solar-Thermal Campus is conceived as an integrated regenerative development platform designed to demonstrate:</p>
+    <div class="grid">
+      <div class="card"><h3>Food Sovereignty</h3><p>Planned livestock production supported by biosecurity, animal welfare, nursery and operational controls.</p></div>
+      <div class="card"><h3>Energy Sovereignty</h3><p>Solar PV, battery storage, biogas and combined heat and power (CHP), coordinated through a campus microgrid.</p></div>
+      <div class="card"><h3>Water Sovereignty</h3><p>On-site water supply and storage, subject to sustainable yield, water quality and authorisation checks.</p></div>
+      <div class="card"><h3>Accessibility Sovereignty</h3><p>Inclusive routes, facilities, charging provisions and emergency arrangements designed for diverse mobility needs.</p></div>
+      <div class="card"><h3>Skills Sovereignty</h3><p>Operator learning, practical training, entrepreneurship and skills transfer.</p></div>
+      <div class="card"><h3>Circular Resource Recovery</h3><p>Resource efficiency, nutrient recovery and future integration of additional circular-economy systems.</p></div>
+    </div>
+  </section>
+
+  <section id="governance" class="">
+    <div class="section-header-wrap">
+      <h2>2. Design Authority &amp; Governance</h2>
+      <button class="btn-section-listen" onclick="speakSection('governance')">🔊 Listen Section</button>
+    </div>
+    <p>This Charter is the controlling internal baseline for campus planning. Supporting studies, financial models, engineering packages, bills of quantities (BOQs), procurement plans and expansion proposals shall identify the Charter version from which they derive.</p>
+    <div class="callout"><strong>Change-control rule</strong><p>No material change to capacity, system configuration, safety approach, cost basis or operating assumptions should be treated as approved until its rationale, impacts, evidence and approval status have been recorded.</p></div>
+    <table>
+      <thead><tr><th>Governance layer</th><th>Scope</th><th>Required evidence</th></tr></thead>
+      <tbody>
+        <tr><td>Strategic</td><td>Vision, sovereignty objectives and project outcomes</td><td>Approved project brief and scope</td></tr>
+        <tr><td>Engineering</td><td>System sizing, interfaces, safety and constructability</td><td>Calculations, drawings and professional reviews</td></tr>
+        <tr><td>Commercial</td><td>Revenue, costs, markets and funding assumptions</td><td>Financial model and documented market evidence</td></tr>
+        <tr><td>Operational</td><td>Production, maintenance, biosecurity and emergency response</td><td>Operating procedures, logs and training records</td></tr>
+        <tr><td>Human development</td><td>Accessibility, training and entrepreneurship</td><td>Access audits, training records and outcomes</td></tr>
+        <tr><td>Environmental</td><td>Water, emissions, waste and resource recovery</td><td>Baseline studies, permits and monitoring results</td></tr>
+        <tr><td>Expansion</td><td>Capacity increases and new systems</td><td>KPI review, design review and formal change approval</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="land" class="">
+    <div class="section-header-wrap">
+      <h2>3. Land &amp; Site Baseline</h2>
+      <button class="btn-section-listen" onclick="speakSection('land')">🔊 Listen Section</button>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="metric">20,000 m²</div><p>Planning land area</p></div>
+      <div class="card"><h3>Site controls</h3><ul><li>Controlled access</li><li>Security fence</li><li>Expansion reserve</li><li>Site zoning and safe circulation to be confirmed</li></ul></div>
+    </div>
+    <p><span class="tag">Baseline</span> 20,000 m² site envelope. <span class="tag">Expandable</span> Phased development within the verified site capacity. <span class="tag">Measured</span> Land utilisation, access performance and reserved expansion area. <span class="tag">Review trigger</span> Any proposed layout change, capacity increase or statutory/site constraint.</p>
+  </section>
+
+  <section id="livestock" class="">
+    <div class="section-header-wrap">
+      <h2>4. Livestock Production Baseline</h2>
+      <button class="btn-section-listen" onclick="speakSection('livestock')">🔊 Listen Section</button>
+    </div>
+    <h3>4.1 Poultry cluster</h3>
+    <table><tbody>
+      <tr><th>Item</th><th>Planning baseline</th></tr>
+      <tr><td>Barn count</td><td>1</td></tr><tr><td>Barn dimensions</td><td>12 m × 32 m</td></tr>
+      <tr><td>Biosecure pods</td><td>4</td></tr><tr><td>Stated capacity</td><td>4,800 broilers</td></tr>
+      <tr><td>Assumed annual cycles</td><td>5.5</td></tr><tr><td>Stated annual throughput</td><td>26,400 broilers</td></tr>
+      <tr><td>Stated annual dispatch</td><td>52,800 kg</td></tr>
+    </tbody></table>
+    <h3>4.2 Swine cluster</h3>
+    <table><tbody>
+      <tr><th>Item</th><th>Planning baseline</th></tr>
+      <tr><td>Barn count</td><td>1</td></tr><tr><td>Barn dimensions</td><td>12 m × 32 m</td></tr>
+      <tr><td>Biosecure pods</td><td>4</td></tr><tr><td>Stated capacity</td><td>160 weaners</td></tr>
+      <tr><td>Assumed annual cycles</td><td>2</td></tr><tr><td>Stated annual throughput</td><td>320 animals</td></tr>
+      <tr><td>Stated annual dispatch</td><td>27,200 kg</td></tr>
+    </tbody></table>
+    <h3>4.3 Combined annual dispatch target</h3>
+    <table><thead><tr><th>Stream</th><th>Annual dispatch target</th></tr></thead><tbody>
+      <tr><td>Broilers</td><td>52,800 kg</td></tr><tr><td>Swine</td><td>27,200 kg</td></tr>
+      <tr><td><strong>Total</strong></td><td><strong>80,000 kg</strong></td></tr>
+    </tbody></table>
+    <div class="warning"><strong>Design verification required:</strong> validate stocking density, animal welfare requirements, cycle length, cleaning downtime, mortality, saleable weight and veterinary/biosecurity controls before final engineering or procurement. Confirm whether the swine figure of 160 represents housing capacity per cycle, placed weaners or another production measure.</div>
+  </section>
+
+  <section id="commercial" class="">
+    <div class="section-header-wrap">
+      <h2>5. Commercial Baseline</h2>
+      <button class="btn-section-listen" onclick="speakSection('commercial')">🔊 Listen Section</button>
+    </div>
+    <table>
+      <thead><tr><th>Stream</th><th>Assumed price</th><th>Stated annual dispatch</th><th>Projected gross revenue</th></tr></thead>
+      <tbody>
+        <tr><td>Broilers</td><td>R40/kg</td><td>52,800 kg</td><td>R2,112,000</td></tr>
+        <tr><td>Swine</td><td>R45/kg</td><td>27,200 kg</td><td>R1,224,000</td></tr>
+        <tr><td><strong>Total</strong></td><td>—</td><td><strong>80,000 kg</strong></td><td><strong>R3,336,000</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="grid">
+      <div class="card"><div class="small">Projected annual gross livestock revenue</div><div class="metric">R3,336,000</div></div>
+      <div class="card"><h3>Commercial qualification</h3><p>This is a planning projection, not guaranteed revenue or net profit. It excludes feed, livestock purchases, labour, veterinary care, utilities, processing, transport, finance, insurance, taxes, losses and other operating costs unless later explicitly modelled.</p></div>
+    </div>
+    <p><strong>Measured:</strong> saleable kilograms, realised price per kilogram, gross sales, cost per kilogram, gross margin, payment timing and unsold/returned product. <strong>Review trigger:</strong> sustained price or cost variance, market-access changes, or dispatch below the approved production plan.</p>
+  </section>
+
+  <section id="water" class="">
+    <div class="section-header-wrap">
+      <h2>6. Water Sovereignty</h2>
+      <button class="btn-section-listen" onclick="speakSection('water')">🔊 Listen Section</button>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Source</h3><div class="metric">1 borehole</div><p>Subject to sustainable yield and water-quality confirmation.</p></div>
+      <div class="card"><h3>Pumping</h3><div class="metric">1.5 kW</div><p>Submersible pump — final duty point and operating profile to be engineered.</p></div>
+      <div class="card"><h3>Storage</h3><div class="metric">2 × 10,000 L</div><p>Two tanks on a stated 3 m elevated structure.</p></div>
+      <div class="card"><h3>Total nominal storage</h3><div class="metric">20,000 L</div><p>Usable capacity depends on tank geometry, reserve level and operating constraints.</p></div>
+    </div>
+    <p><strong>Baseline:</strong> one borehole, one 1.5 kW submersible pump and two 10,000 L tanks. <strong>Expandable:</strong> additional storage, treatment, reuse and distribution redundancy. <strong>Measured:</strong> borehole yield, daily consumption, water quality, tank level and pump energy. <strong>Review trigger:</strong> supply shortfall, quality failure, drought constraints or demand exceeding verified sustainable yield.</p>
+    <div class="warning">The elevated structure requires structural design and review. Confirm geotechnical conditions, borehole authorisations, water-use requirements, potable/non-potable separation and treatment needs before implementation.</div>
+  </section>
+
+  <section id="energy" class="">
+    <div class="section-header-wrap">
+      <h2>7. Energy Sovereignty &amp; Microgrid</h2>
+      <button class="btn-section-listen" onclick="speakSection('energy')">🔊 Listen Section</button>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Solar PV</h3><div class="metric">30 kWp</div><p>Rooftop photovoltaic baseline.</p></div>
+      <div class="card"><h3>Battery storage</h3><div class="metric">60 kWh</div><p>Lithium iron phosphate (LFP) battery energy storage system (BESS).</p></div>
+      <div class="card"><h3>Biodigester</h3><div class="metric">70 m³</div><p>Nominal digester volume; feedstock and gas yield require validation.</p></div>
+      <div class="card"><h3>CHP</h3><div class="metric">15 kW</div><p>Combined heat and power unit; electrical and thermal outputs to be confirmed.</p></div>
+    </div>
+    <h3>7.1 Electricity valuation assumption</h3>
+    <p><strong>Planning value: R1.80/kWh.</strong> Retain this as the fixed baseline assumption for comparable future offset calculations until formally revised. It is a modelling input, not a guarantee of the actual tariff or avoided cost.</p>
+    <h3>7.2 Microgrid logic</h3>
+    <div class="flow"><span>Solar PV</span><b class="plus">+</b><span>BESS</span><b class="plus">+</b><span>Biogas CHP</span><b class="plus">=</b><span>Sovereign Microgrid</span></div>
+    <p><strong>Priority loads:</strong> nursery, water supply, SCADA, biosecurity and essential livestock services.</p>
+    <p><strong>Baseline:</strong> 30 kWp PV, 60 kWh LFP BESS, 70 m³ biodigester and 15 kW CHP. <strong>Expandable:</strong> staged PV, storage, generation and load-management upgrades. <strong>Measured:</strong> generation, consumption, imports/exports where applicable, battery state of charge, runtime, fuel/biogas use, uptime and verified avoided cost. <strong>Review trigger:</strong> critical-load shortfall, repeated outages, sustained utilisation above threshold or a material change in load profile.</p>
+    <div class="warning">Complete an hourly/seasonal energy balance, critical-load schedule, inverter and protection design, islanding/black-start strategy, power-quality assessment, gas-yield assessment and electrical/fire safety review. “Energy sovereignty” is the design objective; actual grid independence must be demonstrated by engineering analysis and commissioning.</div>
+  </section>
+
+  <section id="nursery">
+    <div class="section-header-wrap">
+      <h2>8. Nursery &amp; Biosecurity Architecture</h2>
+      <button class="btn-section-listen" onclick="speakSection('nursery')">🔊 Listen Section</button>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Nursery functions</h3><ul><li>Brooding</li><li>Recovery</li><li>Isolation</li><li>Veterinary support</li><li>Thermal recovery</li></ul></div>
+      <div class="card"><h3>Biosecurity controls</h3><ul><li>Single controlled entry point</li><li>Vehicle screening</li><li>Personnel screening</li><li>Shower/change transition as specified by the biosecurity plan</li><li>Eight stated biosecure pods across poultry and swine clusters</li><li>Isolation capability</li></ul></div>
+    </div>
+    <p><strong>Design objective:</strong> zero-mortality-oriented design, understood as a continuous improvement aspiration rather than a guarantee. Track mortality and morbidity against veterinary targets and investigate every material deviation.</p>
+    <p><strong>Measured:</strong> mortality, morbidity, environmental conditions, water/feed intake, cleaning compliance, access records and isolation events. <strong>Review trigger:</strong> disease alert, unusual mortality, biosecurity breach, inadequate environmental conditions or insufficient isolation capacity.</p>
+  </section>
+
+  <section id="scada">
+    <div class="section-header-wrap">
+      <h2>9. SCADA &amp; Digital Twin</h2>
+      <button class="btn-section-listen" onclick="speakSection('scada')">🔊 Listen Section</button>
+    </div>
+    <p>The monitoring architecture is intended to connect operational data, alarms, historical records and management reporting. Final sensor coverage, communications, cybersecurity and control boundaries must be defined during detailed design.</p>
+    <div class="grid">
+      <div class="card"><h3>Systems monitored</h3><ul><li>Water supply and storage</li><li>Solar PV and BESS</li><li>Biodigester and CHP</li><li>Poultry and swine</li><li>Nursery conditions</li><li>Security and access events</li></ul></div>
+      <div class="card"><h3>Outputs</h3><ul><li>Dashboards</li><li>Operational reports</li><li>KPI tracking</li><li>Remote monitoring</li><li>Historical data and trend analysis</li><li>Alarm and event logs</li></ul></div>
+    </div>
+    <p><strong>Baseline:</strong> monitoring scope listed above. <strong>Expandable:</strong> predictive maintenance, additional sensors and digital-twin models. <strong>Measured:</strong> sensor availability, alarm response time, data completeness and system uptime. <strong>Review trigger:</strong> repeated data gaps, unhandled alarms, cybersecurity findings or new plant interfaces.</p>
+  </section>
+
+  <section id="accessibility">
+    <div class="section-header-wrap">
+      <h2>10. Accessibility Architecture</h2>
+      <button class="btn-section-listen" onclick="speakSection('accessibility')">🔊 Listen Section</button>
+    </div>
+    <ul>
+      <li>Accessible routes</li><li>Accessible toilets</li><li>Accessible parking</li><li>Wheelchair charging</li><li>Mobility scooter charging</li><li>Accessibility hub</li><li>Accessible muster point</li>
+    </ul>
+    <p><strong>Measured:</strong> access-route continuity, facility usability, charging availability, user feedback and emergency evacuation accessibility. <strong>Review trigger:</strong> access audit findings, user feedback, layout change or revised applicable standards.</p>
+    <p>Detailed layouts and facilities should be reviewed against applicable South African building, occupational health and safety, accessibility and fire requirements with suitably qualified professionals and users.</p>
+  </section>
+
+  <section id="academy">
+    <div class="section-header-wrap">
+      <h2>11. Entrepreneurship Academy</h2>
+      <button class="btn-section-listen" onclick="speakSection('academy')">🔊 Listen Section</button>
+    </div>
+    <h3>Core faculties</h3>
+    <div class="grid">
+      <div class="card"><ul><li>Renewable energy</li><li>Livestock operations</li><li>Biodigester operations</li><li>SCADA and telemetry</li></ul></div>
+      <div class="card"><ul><li>Digital agriculture</li><li>Entrepreneurship</li><li>Accessibility and inclusive operations</li><li>Environmental stewardship</li></ul></div>
+    </div>
+    <h3>Proposed operator learning pathways</h3>
+    <p>Poultry Operator · Swine Operator · Digester Operator · CHP Operator · Solar Operator · SCADA Operator.</p>
+    <p>These are proposed training pathways, not a claim that formal accreditation already exists. Any certification represented as accredited must be delivered through the relevant recognised or authorised body.</p>
+    <p><strong>Measured:</strong> enrolments, completion, competency assessments, practical hours, placements, businesses supported and employment outcomes. <strong>Review trigger:</strong> low completion, changed technology, safety incidents or employer/industry feedback.</p>
+  </section>
+
+  <section id="environment">
+    <div class="section-header-wrap">
+      <h2>12. Environmental Stewardship</h2>
+      <button class="btn-section-listen" onclick="speakSection('environment')">🔊 Listen Section</button>
+    </div>
+    <h3>Principles</h3>
+    <ul><li>Carbon reduction</li><li>Photosynthesis and biological productivity</li><li>Nutrient recovery</li><li>Renewable energy</li><li>Circular economy</li><li>Future hydroponics and CO₂ utilisation, subject to technical feasibility</li></ul>
+    <h3>Future expansion — excluded from MVP revenue</h3>
+    <div class="grid">
+      <div class="card"><h3>Future systems</h3><ul><li>Hydroponics</li><li>Agrivoltaics</li><li>CO₂ utilisation</li></ul></div>
+      <div class="card"><h3>Potential outputs</h3><ul><li>Liquid fertiliser</li><li>Solid fertiliser</li><li>Additional circular-economy value chains</li></ul></div>
+    </div>
+    <p><strong>Measured:</strong> waste diverted, feedstock and digestate mass, water reuse, energy displacement, emissions where quantified, and product quality. <strong>Review trigger:</strong> environmental non-compliance, material changes in feedstock, or a proposed new process or product.</p>
+    <div class="warning">Digestate, fertiliser products, captured CO₂ and any other recovered material require appropriate quality, pathogen/contaminant, handling, market and regulatory checks before use or sale. No future expansion revenue is included in the current livestock revenue baseline.</div>
+  </section>
+
+  <section id="fire">
+    <div class="section-header-wrap">
+      <h2>13. Fire Protection — Planning Allowances</h2>
+      <button class="btn-section-listen" onclick="speakSection('fire')">🔊 Listen Section</button>
+    </div>
+    <table>
+      <thead><tr><th>Area</th><th>Fire extinguishers (stated quantity)</th></tr></thead>
+      <tbody>
+        <tr><td>Administration</td><td>4</td></tr><tr><td>Academy</td><td>2</td></tr>
+        <tr><td>Poultry</td><td>4</td></tr><tr><td>Swine</td><td>4</td></tr>
+        <tr><td>Nursery</td><td>2</td></tr><tr><td>Digester</td><td>2</td></tr>
+        <tr><td>CHP</td><td>2</td></tr><tr><td>BESS</td><td>2</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>22</strong></td></tr>
+      </tbody>
+    </table>
+    <table>
+      <thead><tr><th>Area</th><th>Hose reels (stated quantity)</th></tr></thead>
+      <tbody><tr><td>Administration</td><td>1</td></tr><tr><td>Poultry</td><td>2</td></tr><tr><td>Swine</td><td>2</td></tr><tr><td>Energy Centre</td><td>1</td></tr><tr><td><strong>Total</strong></td><td><strong>6</strong></td></tr></tbody>
+    </table>
+    <h3>Alarm system coverage</h3>
+    <p>Administration · Academy · Poultry · Swine · Nursery · Energy Centre.</p>
+    <p><strong>Manual call points:</strong> 10 minimum (planning allowance).</p>
+    <div class="warning">These quantities are preliminary allowances, not certified fire-engineering specifications. A competent fire professional must determine extinguisher types and locations, hose-reel coverage, alarm zoning, detection technologies, manual call-point positions, water supply, evacuation strategy and BESS/biogas-specific protection in line with applicable requirements.</div>
+  </section>
+
+  <section id="emergency">
+    <div class="section-header-wrap">
+      <h2>14. Emergency Architecture</h2>
+      <button class="btn-section-listen" onclick="speakSection('emergency')">🔊 Listen Section</button>
+    </div>
+    <h3>Assembly areas</h3>
+    <div class="flow"><span>Point A</span><span>Point B</span><span>Point C</span></div>
+    <p>Final locations, capacity, signage, access and safe separation from hazards must be shown on the approved site and emergency plans.</p>
+    <h3>Emergency categories</h3>
+    <div class="grid">
+      <div class="card"><ul><li>Fire</li><li>Gas</li><li>Electrical</li><li>Medical</li></ul></div>
+      <div class="card"><ul><li>Biosecurity</li><li>Storm</li><li>Flood</li><li>Security</li></ul></div>
+    </div>
+    <p><strong>Measured:</strong> drill completion, evacuation time, alarm response, incident closure and corrective-action completion. <strong>Review trigger:</strong> incident, drill failure, layout change or a new hazard.</p>
+  </section>
+
+  <section id="failsafe">
+    <div class="section-header-wrap">
+      <h2>15. Failsafe Design</h2>
+      <button class="btn-section-listen" onclick="speakSection('failsafe')">🔊 Listen Section</button>
+    </div>
+    <table>
+      <thead><tr><th>System</th><th>Stated baseline safeguard</th><th>Design verification</th></tr></thead>
+      <tbody>
+        <tr><td>Water</td><td>Dual tanks, gravity feed, level monitoring</td><td>Storage autonomy, pressure, water quality and structural capacity</td></tr>
+        <tr><td>Energy</td><td>Solar, BESS and CHP</td><td>Critical-load balance, transfer/islanding controls and safe shutdown</td></tr>
+        <tr><td>Biodigester</td><td>Relief protection, emergency flare, isolation</td><td>Gas hazard assessment, pressure design, ventilation and safe flare siting</td></tr>
+        <tr><td>BESS</td><td>Fire detection, isolation and battery management system (BMS)</td><td>Manufacturer requirements, thermal-runaway response, separation and emergency access</td></tr>
+        <tr><td>SCADA</td><td>Cloud backup, alarm redundancy and remote access</td><td>Offline operation, cybersecurity, backup restoration and access control</td></tr>
+      </tbody>
+    </table>
+    <p>Failsafe measures must be developed into engineered, tested arrangements and operating procedures. A listed safeguard is a design requirement to verify, not proof that the system is already safe or installed.</p>
+  </section>
+
+  <section id="expansion">
+    <div class="section-header-wrap">
+      <h2>16. Expansion Triggers</h2>
+      <button class="btn-section-listen" onclick="speakSection('expansion')">🔊 Listen Section</button>
+    </div>
+    <p>When any relevant capacity or utilisation KPI exceeds 80% of its approved operating threshold, initiate a documented review. The 80% trigger prompts review; it does not automatically authorise expansion.</p>
+    <table>
+      <thead><tr><th>System</th><th>Current planning baseline</th><th>Indicative expansion pathway</th><th>Review considerations</th></tr></thead>
+      <tbody>
+        <tr><td>Poultry</td><td>4,800</td><td>5,760 → 8,000+</td><td>Housing, welfare, market, feed, water, biosecurity and waste capacity</td></tr>
+        <tr><td>Swine</td><td>160</td><td>320 → 500+</td><td>Clarify capacity basis; welfare, cycle, feed, water and manure handling</td></tr>
+        <tr><td>Solar PV</td><td>30 kWp</td><td>60 kWp → 100 kWp+</td><td>Roof/land area, load profile, inverter, protection and export rules</td></tr>
+        <tr><td>BESS</td><td>60 kWh</td><td>120 kWh → 250 kWh+</td><td>Critical loads, duration, fire safety, degradation and replacement plan</td></tr>
+        <tr><td>Digester</td><td>70 m³</td><td>100 m³ → 150 m³+</td><td>Feedstock availability, retention time, gas yield, digestate and safety</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Review record:</strong> KPI evidence, capacity constraints, commercial case, environmental/safety impacts, engineering changes, approvals, budget and revised implementation schedule.</p>
+  </section>
+
+  <section id="kpis">
+    <div class="section-header-wrap">
+      <h2>17. Master KPI Dashboard</h2>
+      <button class="btn-section-listen" onclick="speakSection('kpis')">🔊 Listen Section</button>
+    </div>
+    <table>
+      <thead><tr><th>KPI group</th><th>Indicators to track</th><th>Recommended reporting basis</th></tr></thead>
+      <tbody>
+        <tr><td>Commercial</td><td>Annual revenue; cost per kg; gross margin</td><td>Monthly, year-to-date and annual</td></tr>
+        <tr><td>Production</td><td>Annual dispatch; saleable yield; mortality rate</td><td>Per cycle and monthly</td></tr>
+        <tr><td>Water</td><td>Water usage; borehole yield; quality; storage availability</td><td>Daily/weekly with monthly summary</td></tr>
+        <tr><td>Energy</td><td>Energy generated; energy offset; system availability</td><td>Daily/monthly with seasonal review</td></tr>
+        <tr><td>Biogas and nutrients</td><td>Biogas produced; digestate produced; product quality</td><td>Daily/weekly and by batch</td></tr>
+        <tr><td>People and skills</td><td>Training participants; completion; jobs created</td><td>Monthly/quarterly</td></tr>
+        <tr><td>Accessibility</td><td>Accessibility beneficiaries; access issues resolved</td><td>Quarterly and after audits</td></tr>
+        <tr><td>Environment</td><td>Carbon reduction; waste diverted; resource recovery</td><td>Monthly/quarterly, with methods documented</td></tr>
+        <tr><td>Digital operations</td><td>System availability; alarm response; data completeness</td><td>Continuous monitoring and monthly review</td></tr>
+      </tbody>
+    </table>
+    <p>Every KPI should have a definition, unit, data source, owner, reporting frequency, baseline value, target, tolerance and corrective-action threshold. Carbon reduction should only be reported where the calculation method and comparison baseline are documented.</p>
+  </section>
+
+  <section id="validation">
+    <div class="section-header-wrap">
+      <h2>18. Validation Register — Required Before Detailed Design Freeze</h2>
+      <button class="btn-section-listen" onclick="speakSection('validation')">🔊 Listen Section</button>
+    </div>
+    <p>The figures in this Charter preserve the stated MVP planning baseline. The following items must be closed or explicitly accepted as open risks before the relevant procurement, construction or operational decision.</p>
+    <table>
+      <thead><tr><th>Topic</th><th>Validation action</th><th>Evidence / responsible review</th></tr></thead>
+      <tbody>
+        <tr><td>Land and layout</td><td>Confirm survey, zoning, setbacks, access, drainage, geotechnical and expansion areas</td><td>Site survey, land-use review and coordinated site plan</td></tr>
+        <tr><td>Livestock</td><td>Confirm stocking, cycles, welfare, mortality, saleable weight and veterinary plan</td><td>Production model and competent animal-health review</td></tr>
+        <tr><td>Revenue</td><td>Confirm market prices, buyer specifications, dispatch assumptions and full operating costs</td><td>Buyer evidence and integrated financial model</td></tr>
+        <tr><td>Water</td><td>Confirm borehole yield, quality, permissions and daily demand</td><td>Hydrogeological/water-quality evidence and authorisation review</td></tr>
+        <tr><td>Energy</td><td>Confirm load profile, PV yield, storage duration, CHP performance and energy autonomy</td><td>Hourly energy model, equipment specifications and engineering review</td></tr>
+        <tr><td>Biodigester</td><td>Confirm feedstock mass, gas yield, process conditions, flare and digestate handling</td><td>Feedstock study, process design and hazard assessment</td></tr>
+        <tr><td>Fire and emergency</td><td>Verify protection quantities, detection, access, muster areas and evacuation</td><td>Competent fire design and emergency plan</td></tr>
+        <tr><td>SCADA/security</td><td>Define network architecture, alarm response, data backup and cyber controls</td><td>Control philosophy, cybersecurity review and recovery test</td></tr>
+        <tr><td>Regulatory</td><td>Identify planning, environmental, building, animal-health, electrical, water and workplace requirements</td><td>Project-specific legal and professional compliance register</td></tr>
+      </tbody>
+    </table>
+    <div class="warning"><strong>Authority boundary:</strong> this Charter is an internal project design authority and planning baseline. It does not replace statutory approvals, environmental authorisations, permits, certified engineering designs, professional sign-off, commissioning or regulatory compliance.</div>
+  </section>
+
+  <section id="change">
+    <div class="section-header-wrap">
+      <h2>19. Version &amp; Change Control</h2>
+      <button class="btn-section-listen" onclick="speakSection('change')">🔊 Listen Section</button>
+    </div>
+    <table>
+      <thead><tr><th>Field</th><th>Required record</th></tr></thead>
+      <tbody>
+        <tr><td>Document title</td><td>Sovereign Architecture Charter — Master Architecture &amp; Living Baseline</td></tr>
+        <tr><td>Version</td><td>1.0 — MVP Authority Document</td></tr>
+        <tr><td>Status</td><td>Baseline for development; technical validation and formal approval remain required</td></tr>
+        <tr><td>Change description</td><td>What changed, where, and why</td></tr>
+        <tr><td>Impact assessment</td><td>Effects on engineering, safety, operations, cost, schedule, environment and interfaces</td></tr>
+        <tr><td>Evidence</td><td>Calculations, reports, drawings, market data or test results supporting the change</td></tr>
+        <tr><td>Approval</td><td>Named reviewer/approver, role, date and approval status</td></tr>
+        <tr><td>Traceability</td><td>Related documents and superseded versions retained in the revision history</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Rule:</strong> Nothing is silently overwritten. Approved changes are versioned, traceable and reflected in affected supporting documents.</p>
+  </section>
+
+  <section id="final">
+    <div class="section-header-wrap">
+      <h2>20. Final Declaration</h2>
+      <button class="btn-section-listen" onclick="speakSection('final')">🔊 Listen Section</button>
+    </div>
+    <div class="callout">
+      <p><strong>This Charter establishes the internal Design Authority for the Sovereign Bio-Solar-Thermal Campus.</strong></p>
+      <p>All future feasibility studies, financial models, funding applications, engineering calculations, bills of quantities, procurement plans, operating procedures and expansion projects shall identify and derive from the applicable approved baseline.</p>
+      <p>Nothing is discarded. Everything is versioned. Everything is measurable. Everything is expandable. Everything is teachable. Everything is regenerative.</p>
+    </div>
+    <p class="small">Document principle: preserve the vision, validate the assumptions, control the changes and measure the results.</p>
+  </section>
+</main>
+<footer>
+  <div><strong>SOVEREIGN BIO-SOLAR-THERMAL CAMPUS</strong></div>
+  <div>Sovereign Architecture Charter · Version 1.0 · Master Architecture &amp; Living Baseline</div>
+  <div class="small">Planning document — not a substitute for project-specific professional design, statutory approval or certification.</div>
+</footer>
+
+<!-- JavaScript Narration & Auto-Scroll Engine -->
+<script>
+  const sectionSummaries = {
+    declaration: "Section 1. Executive Declaration. The Sovereign Bio-Solar-Thermal Campus is an integrated regenerative platform demonstrating food, energy, water, accessibility, skills, and circular resource sovereignty.",
+    governance: "Section 2. Design Authority and Governance. Establishing the controlling internal baseline for campus planning, engineering, commercial, operational, and environmental change control.",
+    land: "Section 3. Land and Site Baseline. Twenty thousand square meters planning land area with controlled access, security fencing, and expansion reserve.",
+    livestock: "Section 4. Livestock Production Baseline. Comprehensive poultry and swine cluster specifications targeting eighty thousand kilograms annual dispatch.",
+    commercial: "Section 5. Commercial Baseline. Projected annual gross livestock revenue of three million three hundred thirty-six thousand rands based on planning production targets.",
+    water: "Section 6. Water Sovereignty. Borehole supply, one point five kilowatt pumping, and twenty thousand liters nominal elevated storage capacity.",
+    energy: "Section 7. Energy Sovereignty and Microgrid. Thirty kilowatt-peak solar PV, sixty kilowatt-hour battery storage, seventy cubic meter biodigester, and fifteen kilowatt CHP unit.",
+    nursery: "Section 8. Nursery and Biosecurity Architecture. Brooding, recovery, isolation, and biosecure pod controls designed for zero mortality aspirations.",
+    scada: "Section 9. SCADA and Digital Twin. Centralized monitoring across water, energy, biogas, livestock, nursery conditions, and security events.",
+    accessibility: "Section 10. Accessibility Architecture. Inclusive routes, accessible facilities, mobility charging stations, and evacuation muster points.",
+    academy: "Section 11. Entrepreneurship Academy. Core technical faculties and proposed operator learning pathways for renewable energy, livestock, and digital agriculture.",
+    environment: "Section 12. Environmental Stewardship. Carbon reduction, photosynthesis, nutrient recovery, and circular economy integration.",
+    fire: "Section 13. Fire Protection. Preliminary allowances for fire extinguishers, hose reels, and alarm coverage across campus facilities.",
+    emergency: "Section 14. Emergency Architecture. Assembly points and protocol categories covering fire, gas, electrical, medical, and biosecurity contingencies.",
+    failsafe: "Section 15. Failsafe Design. System safeguards spanning water storage, energy autonomy, biogas relief valves, battery management, and SCADA redundancy.",
+    expansion: "Section 16. Expansion Triggers. Eighty percent utilisation thresholds prompting formal engineering and commercial reviews for scaling capacity.",
+    kpis: "Section 17. Master KPI Dashboard. Tracking commercial, production, water, energy, environmental, and digital operational metrics.",
+    validation: "Section 18. Validation Register. Required technical, legal, and engineering validations before detailed design freeze.",
+    change: "Section 19. Version and Change Control. Strict traceability rules ensuring no engineering or planning baseline is silently overwritten.",
+    final: "Section 20. Final Declaration. Reaffirming the campus design authority where nothing is discarded and all systems remain versioned and regenerative."
+  };
+
+  let currentUtterance = null;
+
+  function stopNarration() {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    clearActiveHighlights();
+  }
+
+  function clearActiveHighlights() {
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active-narration'));
+  }
+
+  function highlightAndScrollSection(sectionId) {
+    clearActiveHighlights();
+    const sectionEl = document.getElementById(sectionId);
+    if (sectionEl) {
+      sectionEl.classList.add('active-narration');
+      sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function speakSection(sectionId) {
+    stopNarration();
+    if (!('speechSynthesis' in window)) return;
+    
+    const text = sectionSummaries[sectionId];
+    if (!text) return;
+
+    highlightAndScrollSection(sectionId);
+
+    // Sync dropdown if matched
+    const dropdown = document.getElementById('sectionDropdown');
+    if (dropdown) dropdown.value = sectionId;
+
+    currentUtterance = new SpeechSynthesisUtterance(text);
+    currentUtterance.lang = 'en-US';
+    currentUtterance.rate = 0.95;
+    currentUtterance.onend = () => {
+      const activeSec = document.getElementById(sectionId);
+      if (activeSec) activeSec.classList.remove('active-narration');
+    };
+    window.speechSynthesis.speak(currentUtterance);
+  }
+
+  function jumpAndListenSelectedSection(sectionId) {
+    if (sectionId) {
+      speakSection(sectionId);
+    }
+  }
+
+  async function startFullNarration() {
+    stopNarration();
+    if (!('speechSynthesis' in window)) return;
+
+    const keys = Object.keys(sectionSummaries);
+    for (let i = 0; i < keys.length; i++) {
+      const secId = keys[i];
+      const dropdown = document.getElementById('sectionDropdown');
+      if (dropdown) dropdown.value = secId;
+
+      await new Promise((resolve) => {
+        highlightAndScrollSection(secId);
+        currentUtterance = new SpeechSynthesisUtterance(sectionSummaries[secId]);
+        currentUtterance.lang = 'en-US';
+        currentUtterance.rate = 0.95;
+        currentUtterance.onend = () => {
+          const activeSec = document.getElementById(secId);
+          if (activeSec) activeSec.classList.remove('active-narration');
+          resolve();
+        };
+        window.speechSynthesis.speak(currentUtterance);
+      });
+    }
+  }
+</script>
+
+
+</body></html>

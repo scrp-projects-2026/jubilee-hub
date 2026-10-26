@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<!-- saved from url=(0145)file:///C:/Users/ASUS/OneDrive/OneDrive%20Archive/%F0%9F%93%82DR-PALESA-MASTER-PORTAL/SCADA-Telemetry-Simulation/feed-water-bioenergy-matrix.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed, Water &amp; Bio-Energy Matrix | Lwandile Engineering Projects</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --panel-bg: #161b22;
+            --border-color: #30363d;
+            --accent-green: #238636;
+            --accent-blue: #58a6ff;
+            --accent-amber: #d29922;
+            --accent-purple: #bc8cff;
+            --accent-red: #da3633;
+            --text-main: #c9d1d9;
+            --text-bright: #f0f6fc;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sovereign-header {
+            text-align: center;
+            padding: 14px;
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            letter-spacing: 1.5px;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+
+        .vision-drawer {
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .vision-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+        }
+
+        .vision-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vision-title h2 {
+            margin: 0;
+            color: var(--text-bright);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .vision-title p {
+            margin: 4px 0 0 0;
+            color: #8b949e;
+            font-size: 13px;
+        }
+
+        .audio-btn {
+            background: var(--accent-blue);
+            color: #000000;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vision-quote {
+            line-height: 1.7;
+            font-size: 14px;
+            color: var(--text-bright);
+        }
+
+        .scada-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .scada-grid { grid-template-columns: 1fr; }
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .panel h3 {
+            margin-top: 0;
+            color: var(--text-bright);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .control-group {
+            margin-bottom: 16px;
+            background: var(--bg-dark);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-bright);
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-blue);
+        }
+
+        .steward-teaching-box {
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--accent-blue);
+            line-height: 1.4;
+            border-left: 3px solid var(--accent-blue);
+            padding: 6px 10px;
+            background: rgba(88, 166, 255, 0.05);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .telemetry-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin: 4px 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .status-optimal { background: rgba(35, 134, 54, 0.2); color: #3fb950; border: 1px solid var(--accent-green); }
+        .status-warning { background: rgba(210, 153, 34, 0.2); color: var(--accent-amber); border: 1px solid var(--accent-amber); }
+        .status-danger { background: rgba(218, 54, 51, 0.2); color: var(--accent-red); border: 1px solid var(--accent-red); }
+
+        .audit-terminal {
+            background: #040d12;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            color: #58a6ff;
+            height: 120px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .narrator-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--text-bright);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="sovereign-header">
+        💧 LWANDILE ENGINEERING PROJECTS • INTEGRATED MVP BIO-ENERGY &amp; TELEMETRY MATRIX
+    </div>
+
+    <div class="vision-drawer">
+        <div class="vision-header">
+            <div class="vision-title">
+                <span style="font-size: 28px;">⚙️</span>
+                <div>
+                    <h2>Voice of Vision | Circular Bio-Refinery &amp; Livestock SCADA</h2>
+                    <p>R3.1M MVP Engine: 5,720 Broilers/Wave (7x) + 160 Swine/Wave (3x) • Bio-Digester Synergy</p>
+                </div>
+            </div>
+            <button onclick="toggleVisionAudio()" id="audio-btn" class="audio-btn">
+                <span>▶</span> Listen to Directive
+            </button>
+        </div>
+
+        <div class="vision-quote">
+            <p>
+                <strong style="color: var(--accent-blue);">Sovereign Circular Inscription:</strong> 
+                "In Scapush Precision, waste is an uncaptured yield. Broiler and swine slurry drive the anaerobic bio-digester, co-generating off-grid electricity, brood thermal heat, and high-nitrogen bio-fertilizer. Scaling begins at R3.1M, with infrastructure pre-engineered for infinite expansion."
+            </p>
+        </div>
+
+        <div class="narrator-toggle">
+            <input type="checkbox" id="voice-activation-toggle" checked="">
+            <label for="voice-activation-toggle"><strong>Enable Voice Narrator on Every Activation &amp; Control Adjustment</strong></label>
+        </div>
+    </div>
+
+    <div class="scada-grid">
+        <!-- PANEL 1: BROILER TELEMETRY -->
+        <div class="panel">
+            <h3>🐔 Broiler Matrix (MVP: 5,720/wave)</h3>
+
+            <div class="control-group">
+                <label>Active Wave Broiler Count: <span id="broiler-val">5,700</span> Birds</label>
+                <input type="range" id="broiler-input" min="1000" max="20000" step="100" value="5720" oninput="handleBroilerInput(this.value)">
+                <div class="steward-teaching-box" id="steward-broiler-teaching">📜 <strong>Steward's Teaching:</strong> Wave of 5,700 broilers generates approx 342 kg/day dry litter waste for anaerobic co-digestion.</div>
+            </div>
+
+            <div class="control-group">
+                <label>Flock Age: <span id="age-val">14</span> Day(s) old</label>
+                <input type="range" id="age-input" min="1" max="35" value="14" oninput="handleAgeInput(this.value)">
+                <div class="steward-teaching-box" id="steward-age-teaching">
+                    📜 <strong>Steward's Teaching:</strong> Grower stage. Daily feed requirement and litter organic load calculated dynamically.
+                </div>
+            </div>
+
+            <div>
+                <span style="font-size: 11px; color: #8b949e;">Est. Broiler Water Draw</span>
+                <div id="broiler-water-req" class="telemetry-value" style="color: var(--accent-blue);">791 L / day</div>
+            </div>
+        </div>
+
+        <!-- PANEL 2: SWINE TELEMETRY -->
+        <div class="panel">
+            <h3>🐖 Swine Matrix (MVP: 160/wave)</h3>
+
+            <div class="control-group">
+                <label>Active Wave Swine Count: <span id="swine-val">160</span> Head</label>
+                <input type="range" id="swine-input" min="50" max="1000" step="10" value="160" oninput="handleSwineInput(this.value)">
+                <div class="steward-teaching-box" id="steward-swine-teaching">📜 <strong>Steward's Teaching:</strong> 160 swine at 60 kg contribute 768 kg/day liquid slurry, balancing the carbon-to-nitrogen (C:N) ratio in the digester.</div>
+            </div>
+
+            <div class="control-group">
+                <label>Avg Swine Weight: <span id="weight-val">60</span> kg</label>
+                <input type="range" id="weight-input" min="15" max="110" step="5" value="60" oninput="handleWeightInput(this.value)">
+                <div class="steward-teaching-box" id="steward-weight-teaching">
+                    📜 <strong>Steward's Teaching:</strong> Grower-finisher phase. Slurry yield scales directly with metabolic mass.
+                </div>
+            </div>
+
+            <div>
+                <span style="font-size: 11px; color: #8b949e;">Est. Swine Water Draw</span>
+                <div id="swine-water-req" class="telemetry-value" style="color: var(--accent-blue);">1,152 L / day</div>
+            </div>
+        </div>
+
+        <!-- PANEL 3: BIO-DIGESTER REFINERY -->
+        <div class="panel">
+            <h3>⚡ Bio-Digester Co-Gen Tri-Yield</h3>
+
+            <div style="margin-bottom: 12px;">
+                <span style="font-size: 11px; color: #8b949e;">Electrical Output (Combined Heat &amp; Power)</span>
+                <div id="elec-yield" class="telemetry-value" style="color: var(--accent-amber);">145.3 kWh / day</div>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <span style="font-size: 11px; color: #8b949e;">Thermal Energy Harvest (Brooding/Heating)</span>
+                <div id="thermal-yield" class="telemetry-value" style="color: #3fb950;">795.6 MJ / day</div>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <span style="font-size: 11px; color: #8b949e;">Bio-Fertilizer (Digestate Extract)</span>
+                <div id="fertilizer-yield" class="telemetry-value" style="color: var(--accent-purple);">1,554 L / day</div>
+            </div>
+
+            <div>
+                <span id="digester-badge" class="status-badge status-optimal">BIO-DIGESTER OPTIMAL: OFF-GRID ACTIVE</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="audit-terminal" id="terminal-log">
+        [SYSTEM STARTUP]: Lwandile Integrated MVP Telemetry Module Initialized.<br>
+        [MODEL SETUP]: 5,720 Broilers x 7 Waves | 160 Swine x 3 Waves | R3.1M Base Architecture.<br>
+        [NARRATOR SYSTEM]: Voice Narrator on Every Activation initialized.<br>
+        [STEWARD TEACHINGS]: Circular Tri-Yield Bio-Refinery Active.
+    <br>[4:47:19 PM]: [NARRATOR ACTIVATION]: Swine count adjusted to 1000 head. Updating volatile solids yield for the bio-digester.<br>[4:47:23 PM]: [NARRATOR ACTIVATION]: Average swine mass set to 110 kilograms. Recalculating slurry volume and gas production potentials.<br>[4:47:26 PM]: [NARRATOR ACTIVATION]: Broiler age set to Day 35. Updating daily feed intake and manure generation factors.<br>[4:47:28 PM]: [NARRATOR ACTIVATION]: Active broiler wave set to 20,000 birds. Recalculating poultry bio-mass and water intake.<br>[4:47:48 PM]: [NARRATOR ACTIVATION]: Swine count adjusted to 340 head. Updating volatile solids yield for the bio-digester.<br>[4:47:51 PM]: [NARRATOR ACTIVATION]: Average swine mass set to 45 kilograms. Recalculating slurry volume and gas production potentials.<br>[4:47:56 PM]: [NARRATOR ACTIVATION]: Average swine mass set to 15 kilograms. Recalculating slurry volume and gas production potentials.<br>[4:48:01 PM]: [NARRATOR ACTIVATION]: Broiler age set to Day 2. Updating daily feed intake and manure generation factors.<br>[4:48:13 PM]: [NARRATOR ACTIVATION]: Active broiler wave set to 1,200 birds. Recalculating poultry bio-mass and water intake.<br>[4:48:17 PM]: [NARRATOR ACTIVATION]: Active broiler wave set to 3,700 birds. Recalculating poultry bio-mass and water intake.<br>[4:48:20 PM]: [NARRATOR ACTIVATION]: Active broiler wave set to 5,100 birds. Recalculating poultry bio-mass and water intake.<br>[4:48:29 PM]: [NARRATOR ACTIVATION]: Broiler age set to Day 12. Updating daily feed intake and manure generation factors.<br>[4:48:39 PM]: [NARRATOR ACTIVATION]: Average swine mass set to 40 kilograms. Recalculating slurry volume and gas production potentials.</div>
+
+</div>
+
+<script>
+let isSpeakingDirective = false;
+let speechDebounceTimer = null;
+
+const visionText = `Voice of Vision, Integrated Bio-Energy Matrix by Lwandile Engineering Projects. Operating 5,720 broilers per wave across seven waves, and 160 swine per wave across three waves. This R 3.1 million MVP startup architecture drives our bio-digester co-generator, producing off-grid electricity, thermal brooding heat, and rich bio-fertilizer. Expandable by design, executed with Scapush Precision.`;
+
+function speakText(text) {
+    const isVoiceEnabled = document.getElementById('voice-activation-toggle').checked;
+    if (!isVoiceEnabled || !('speechSynthesis' in window)) return;
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.0;
+    utterance.pitch = 0.95;
+    window.speechSynthesis.speak(utterance);
+}
+
+function logTerminal(message) {
+    const log = document.getElementById('terminal-log');
+    const timestamp = new Date().toLocaleTimeString();
+    log.innerHTML += `<br>[${timestamp}]: ${message}`;
+    log.scrollTop = log.scrollHeight;
+}
+
+function handleBroilerInput(val) {
+    updateTelemetry();
+    clearTimeout(speechDebounceTimer);
+    speechDebounceTimer = setTimeout(() => {
+        const text = `Active broiler wave set to ${parseInt(val).toLocaleString()} birds. Recalculating poultry bio-mass and water intake.`;
+        speakText(text);
+        logTerminal(`[NARRATOR ACTIVATION]: ${text}`);
+    }, 350);
+}
+
+function handleAgeInput(val) {
+    updateTelemetry();
+    clearTimeout(speechDebounceTimer);
+    speechDebounceTimer = setTimeout(() => {
+        const text = `Broiler age set to Day ${val}. Updating daily feed intake and manure generation factors.`;
+        speakText(text);
+        logTerminal(`[NARRATOR ACTIVATION]: ${text}`);
+    }, 350);
+}
+
+function handleSwineInput(val) {
+    updateTelemetry();
+    clearTimeout(speechDebounceTimer);
+    speechDebounceTimer = setTimeout(() => {
+        const text = `Swine count adjusted to ${val} head. Updating volatile solids yield for the bio-digester.`;
+        speakText(text);
+        logTerminal(`[NARRATOR ACTIVATION]: ${text}`);
+    }, 350);
+}
+
+function handleWeightInput(val) {
+    updateTelemetry();
+    clearTimeout(speechDebounceTimer);
+    speechDebounceTimer = setTimeout(() => {
+        const text = `Average swine mass set to ${val} kilograms. Recalculating slurry volume and gas production potentials.`;
+        speakText(text);
+        logTerminal(`[NARRATOR ACTIVATION]: ${text}`);
+    }, 350);
+}
+
+function toggleVisionAudio() {
+    const btn = document.getElementById('audio-btn');
+    if ('speechSynthesis' in window) {
+        if (isSpeakingDirective) {
+            window.speechSynthesis.cancel();
+            isSpeakingDirective = false;
+            btn.innerHTML = '<span>▶</span> Listen to Directive';
+            btn.style.background = 'var(--accent-blue)';
+            logTerminal('[NARRATOR]: Circular Vision directive audio paused.');
+        } else {
+            const utterance = new SpeechSynthesisUtterance(visionText);
+            utterance.rate = 0.92;
+            utterance.pitch = 0.95;
+            
+            utterance.onend = function() {
+                isSpeakingDirective = false;
+                btn.innerHTML = '<span>▶</span> Listen to Directive';
+                btn.style.background = 'var(--accent-blue)';
+            };
+
+            window.speechSynthesis.speak(utterance);
+            isSpeakingDirective = true;
+            btn.innerHTML = '<span>⏹</span> Pause Directive';
+            btn.style.background = 'var(--accent-red)';
+            logTerminal('[NARRATOR ACTIVATION]: Integrated MVP directive engaged.');
+        }
+    }
+}
+
+function updateTelemetry() {
+    const broilers = parseInt(document.getElementById('broiler-input').value);
+    const age = parseInt(document.getElementById('age-input').value);
+    const swine = parseInt(document.getElementById('swine-input').value);
+    const swineWeight = parseInt(document.getElementById('weight-input').value);
+
+    document.getElementById('broiler-val').innerText = broilers.toLocaleString();
+    document.getElementById('age-val').innerText = age;
+    document.getElementById('swine-val').innerText = swine;
+    document.getElementById('weight-val').innerText = swineWeight;
+
+    // Broiler Water & Manure Math
+    const feedPerBirdGram = 12 + (age * 4.5); 
+    const totalBroilerFeedKg = (broilers * feedPerBirdGram) / 1000;
+    const broilerWaterLiters = Math.round(totalBroilerFeedKg * 1.85);
+    const broilerManureKg = totalBroilerFeedKg * 0.8;
+
+    // Swine Water & Slurry Math
+    const swineWaterLiters = Math.round(swine * (swineWeight * 0.12));
+    const swineSlurryKg = swine * (swineWeight * 0.08);
+
+    document.getElementById('broiler-water-req').innerText = broilerWaterLiters.toLocaleString() + " L / day";
+    document.getElementById('swine-water-req').innerText = swineWaterLiters.toLocaleString() + " L / day";
+
+    // Bio-Digester Calculations (CHP)
+    // Approx biogas yields: Poultry manure ~0.09 m3/kg, Swine slurry ~0.05 m3/kg
+    const totalBiogasM3 = (broilerManureKg * 0.09) + (swineSlurryKg * 0.05);
+    const electricityKwh = (totalBiogasM3 * 2.1).toFixed(1); // 1 m3 biogas ≈ 2.1 kWh elec
+    const thermalMj = (totalBiogasM3 * 11.5).toFixed(1);      // Thermal heat recovered
+    const digestateLiters = Math.round((broilerManureKg + swineSlurryKg) * 1.4);
+
+    document.getElementById('elec-yield').innerText = electricityKwh + " kWh / day";
+    document.getElementById('thermal-yield').innerText = thermalMj + " MJ / day";
+    document.getElementById('fertilizer-yield').innerText = digestateLiters.toLocaleString() + " L / day";
+
+    // Steward Teachings Updates
+    const stewardBroiler = document.getElementById('steward-broiler-teaching');
+    const stewardSwine = document.getElementById('steward-swine-teaching');
+
+    stewardBroiler.innerHTML = `📜 <strong>Steward's Teaching:</strong> Wave of ${broilers.toLocaleString()} broilers generates approx ${Math.round(broilerManureKg)} kg/day dry litter waste for anaerobic co-digestion.`;
+    stewardSwine.innerHTML = `📜 <strong>Steward's Teaching:</strong> ${swine} swine at ${swineWeight} kg contribute ${Math.round(swineSlurryKg)} kg/day liquid slurry, balancing the carbon-to-nitrogen (C:N) ratio in the digester.`;
+}
+
+updateTelemetry();
+</script>
+
+
+</body></html>
